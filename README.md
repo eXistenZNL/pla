@@ -8,7 +8,7 @@ It's a coder's simplest workflow automation tool.
 
 ## Install
 
-Pla requires Python 2.x. 
+Pla requires Python 2.x.
 Use the pip installer to install Pla.
 
 ``` bash
@@ -30,7 +30,7 @@ $ (sudo) pip install pla --upgrade
 ```
 
 ### Install from git
-To install Pla from git you first need to make sure Pla is uninstalled. Then you must clone the repository and install 
+To install Pla from git you first need to make sure Pla is uninstalled. Then you must clone the repository and install
 the development version:
 
 ```shell
@@ -55,7 +55,7 @@ and run the targets from the command line.
 
 Lets say we use Pla to kickstart our working day. We will make a Plafile which starts our local dev server, starts our IDE
  and opens the application we're working on in the browser.
- 
+
 First create the Plafile with a target called `dev`:
 
 ```yaml
@@ -121,7 +121,7 @@ Running target "test":
 
 ### Linking targets
 
-As of Pla v0.2 it is possible to let your targets call each other. This is simply done by refering to the target 
+As of Pla v0.2 it is possible to let your targets call each other. This is simply done by refering to the target
 prepended with an `=` sign. Like so:
 
 ```yaml
@@ -131,7 +131,7 @@ up:
   - =updatecode
   - pstorm .
   - open http://local.project.url/
-  
+
 updatecode:
   - git submodule update --init --recursive
   - composer install
@@ -140,8 +140,8 @@ updatecode:
 ### Target parameters
 
 Pla v0.3 gives you the ability to variables in target commands. This feature is called target parameters.
- 
-Simply define the parameters in the target definition, and put them in your command. Enclosing the parameters name with 
+
+Simply define the parameters in the target definition, and put them in your command. Enclosing the parameters name with
 `%` signs. For example:
 
 ```yaml
@@ -159,12 +159,12 @@ $ pla pr 123
 
   **Disclaimer** The current implementation of target parameters is built to work only when you directly call the
   parametrized target.
-  
+
 ### Command OS filter
 
 When you run the same Pla target on multiple operating systems you might want to specify which command to execute on what OS.
 You can do this by prefixing your command with a filter that indicates the OS's family name.
- 
+
 ```yaml
 # Plafile
 os:
@@ -191,7 +191,10 @@ Running target "os":
 | Ubuntu        | ubuntu  |
 | Red Hat       | redhat  |
 | Mac OS        | darwin  |
+| Cygwin        | cygwin  |
 | Windows       | windows |
+
+To see your current platform, simply run `pla --print-platform`.
 
 ### Target descriptions
 

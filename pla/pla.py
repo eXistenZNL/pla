@@ -31,12 +31,16 @@ from .plafile_finder import find_pla_file
 
 plafile = 'Plafile.yml'
 
-
 @click.command(context_settings=dict(ignore_unknown_options=True, allow_extra_args=True))
 @click.argument('target', default='all')
+@click.option('--print-platform', is_flag=True, help='Print the current platform.')
 @click.pass_context
-def pla(context, target):
+def pla(context, target, print_platform):
     click.echo(click.style('Pla ' + __version__ + ' by Richard Tuin - Coder\'s simplest workflow automation tool.'))
+
+    if print_platform:
+        click.echo(click.style('\nYour platform is ' + platform.system() + '.'))
+        return
 
     pla_file_path = find_pla_file(os.getcwd(), plafile)
     if not pla_file_path:

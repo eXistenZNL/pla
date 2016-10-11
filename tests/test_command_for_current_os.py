@@ -128,6 +128,11 @@ class TestCommandForCurrentOs(TestCase):
             command='(debian) echo "Debian"',
             os='Linux-3.16.0-4-amd64-x86_64-with-debian-8.3',
             expected='echo "Debian"'
+        ),
+        dict(
+            command='(cygwin) echo "Cygwin"',
+            os='CYGWIN_NT-10.0',
+            expected='echo "Cygwin"'
         )
     )
 
