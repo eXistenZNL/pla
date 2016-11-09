@@ -1,0 +1,13 @@
+#compdef pla
+
+_pla() {
+
+    if [ ! -f Plafile.yml ]; then
+        return
+    fi
+
+    local -a actions
+    actions=($(grep -Po '^([^\s:])+' Plafile.yml))
+    _describe 'action' actions
+}
+

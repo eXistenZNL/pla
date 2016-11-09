@@ -8,7 +8,7 @@ It's a coder's simplest workflow automation tool.
 
 ## Install
 
-Pla requires Python 2.x. 
+Pla requires Python 2.x.
 Use the pip installer to install Pla.
 
 ``` bash
@@ -22,6 +22,16 @@ $ sudo easy_install pip
 
 _**Note:** OS X Users reported that [Homebrew](http://brew.sh/)'s version of Python works better than the stock one._
 
+## Optional: Shell completion
+
+For Bash and zsh, a auto completion helper is available in the directory shell-completion.
+
+* Bash users typically install the file to `/etc/bash_completion.d/` as described [here](https://github.com/scop/bash-completion).
+* Zsh users can install this file somewhere in their `fpath` as described [here](http://zsh.sourceforge.net/Doc/Release/Completion-System.html#Autoloaded-files).
+* [Oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) users can install this file in `~/.oh-my-zsh/completions`, create the directory if it does not exist yet.
+
+In all cases, restart your shell so the helper is picked up.
+
 ### Upgrade an existing installation
 
 When installed with Pip you can upgrade to the latest version using:
@@ -30,7 +40,7 @@ $ (sudo) pip install pla --upgrade
 ```
 
 ### Install from git
-To install Pla from git you first need to make sure Pla is uninstalled. Then you must clone the repository and install 
+To install Pla from git you first need to make sure Pla is uninstalled. Then you must clone the repository and install
 the development version:
 
 ```shell
@@ -55,7 +65,7 @@ and run the targets from the command line.
 
 Lets say we use Pla to kickstart our working day. We will make a Plafile which starts our local dev server, starts our IDE
  and opens the application we're working on in the browser.
- 
+
 First create the Plafile with a target called `dev`:
 
 ```yaml
@@ -121,7 +131,7 @@ Running target "test":
 
 ### Linking targets
 
-As of Pla v0.2 it is possible to let your targets call each other. This is simply done by refering to the target 
+As of Pla v0.2 it is possible to let your targets call each other. This is simply done by refering to the target
 prepended with an `=` sign. Like so:
 
 ```yaml
@@ -131,7 +141,7 @@ up:
   - =updatecode
   - pstorm .
   - open http://local.project.url/
-  
+
 updatecode:
   - git submodule update --init --recursive
   - composer install
@@ -140,8 +150,8 @@ updatecode:
 ### Target parameters
 
 Pla v0.3 gives you the ability to variables in target commands. This feature is called target parameters.
- 
-Simply define the parameters in the target definition, and put them in your command. Enclosing the parameters name with 
+
+Simply define the parameters in the target definition, and put them in your command. Enclosing the parameters name with
 `%` signs. For example:
 
 ```yaml
@@ -159,12 +169,12 @@ $ pla pr 123
 
   **Disclaimer** The current implementation of target parameters is built to work only when you directly call the
   parametrized target.
-  
+
 ### Command OS filter
 
 When you run the same Pla target on multiple operating systems you might want to specify which command to execute on what OS.
 You can do this by prefixing your command with a filter that indicates the OS's family name.
- 
+
 ```yaml
 # Plafile
 os:

@@ -1,0 +1,13 @@
+_pla() {
+
+    if [ ! -f Plafile.yml ]; then
+        return
+    fi
+
+    local cur prev words cword
+    _init_completion || return
+
+    COMPREPLY=( $( compgen -W '$(grep -Po "^([^\s:])+" Plafile.yml)' -- "$cur" ) )
+}
+
+complete -F _pla pla
